@@ -1,0 +1,12 @@
+# Local validation and generation artifacts
+/.build/
+/.codex-finalizer/
+
+# Intermediate presentation outputs
+/assets/
+/output/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/

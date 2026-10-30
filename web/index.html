@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="盘龙城遗址博物院三展厅互动导览。点击文物名称，查看馆藏信息。"
+    />
+    <title>盘龙城遗址博物院三展厅导览</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="hero-copy">
+          <p class="eyebrow">个人思政实践 · 盘龙城遗址博物院</p>
+          <h1>三展厅馆藏导览</h1>
+          <p class="subtitle">
+            盘龙城遗址博物院以三个展厅串联城市起源、社会生活与南土文明，
+            带领观众从考古发现走进商代青铜世界。
+          </p>
+        </div>
+      </header>
+
+      <main class="museum-guide" aria-labelledby="guide-title">
+        <div class="guide-heading">
+          <div>
+            <p class="section-kicker">馆内参观顺序</p>
+            <h2 id="guide-title">三展厅导览图</h2>
+          </div>
+          <div class="legend" aria-label="导览图例">
+            <span><i class="legend-route"></i>建议动线</span>
+            <span><i class="legend-classic">★</i>经典文物</span>
+          </div>
+        </div>
+
+        <div class="floorplan">
+          <span class="map-label map-entry">入口</span>
+          <span class="map-label map-exit">出口</span>
+          <div class="map-route" aria-hidden="true"></div>
+          <div id="hall-map" class="hall-map"></div>
+        </div>
+
+        <p class="guide-note">
+          展厅位置为导览示意，实际展陈位置与开放区域以馆内标识为准。
+        </p>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          资料与图片：盘龙城遗址博物院官网及公开馆藏资料。个人思政实践展示 ·
+          <span id="current-year"></span>
+        </p>
+        <button id="open-script" class="text-button" type="button">
+          查看三分钟讲解提纲
+        </button>
+      </footer>
+    </div>
+
+    <dialog id="artifact-dialog" class="artifact-dialog" aria-labelledby="modal-title">
+      <div class="modal-shell">
+        <button id="close-artifact" class="modal-close" type="button" aria-label="关闭文物信息">
+          关闭
+        </button>
+
+        <div class="modal-content">
+          <figure class="modal-figure">
+            <img id="modal-image" src="" alt="" />
+            <figcaption id="modal-badge">经典文物</figcaption>
+          </figure>
+
+          <div class="modal-text">
+            <p id="modal-hall" class="section-kicker"></p>
+            <h2 id="modal-title"></h2>
+            <p id="modal-meta" class="modal-meta"></p>
+            <p id="modal-summary" class="modal-summary"></p>
+            <dl id="modal-facts" class="modal-facts"></dl>
+            <p id="modal-reading" class="modal-reading"></p>
+            <p class="modal-source">
+              <a id="modal-source-link" href="#" target="_blank" rel="noreferrer">
+                查看馆方原始资料
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="modal-navigation">
+          <button id="previous-artifact" class="modal-nav-button" type="button">
+            上一件
+          </button>
+          <span id="modal-counter" class="modal-counter"></span>
+          <button id="next-artifact" class="modal-nav-button" type="button">
+            下一件
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="script-dialog" class="script-dialog" aria-labelledby="script-title">
+      <div class="dialog-heading">
+        <div>
+          <p class="section-kicker">演讲者视图</p>
+          <h2 id="script-title">三分钟讲解提纲</h2>
+        </div>
+        <button id="close-script" class="close-button" type="button" aria-label="关闭讲解提纲">
+          关闭
+        </button>
+      </div>
+      <div class="script-content">
+        <p>
+          <strong>第一展厅</strong>
+          “浪淘千古”从盘龙城的发现与考古认识讲起，通过铜钺、铜面具等器物进入商代南土中心城邑的历史。
+        </p>
+        <p>
+          <strong>第二展厅</strong>
+          “故邑风物”集中展示城市生活与青铜工艺。青铜大圆鼎通高85厘米；铜带鋬觚形器器形独特；绿松石镶金饰件体现金玉工艺；有领玉璧直径22厘米，是代表性礼玉。
+        </p>
+        <p>
+          <strong>第三展厅</strong>
+          “角立南土”从礼制与区域交流出发，通过兽面纹青铜尊和玉戈，把盘龙城放回商代文明网络。
+        </p>
+        <p>
+          <strong>主题回应</strong>
+          新时代文化建设在这里落实为文物保护、考古研究、公共展示和社会教育的协同。观众从文物理解文明，文化遗产因此成为可看、可学、可共享的公共文化资源。
+        </p>
+        <p class="source-line">
+          资料来源：盘龙城遗址博物院官网
+          <a href="https://www.plcsmuseum.com.cn/News/Detail/PLSummary" target="_blank" rel="noreferrer">盘龙城简介</a>、
+          <a href="https://www.plcsmuseum.com.cn/Exhibition/ExhibitionList/BasicExhibition" target="_blank" rel="noreferrer">基本陈列</a>及馆藏详情页。
+          网页访问日期：2026年10月30日。
+        </p>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
