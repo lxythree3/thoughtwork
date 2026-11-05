@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="盘龙城文物生态地图：开启生态图层，查看六件文物对应的馆内展柜与遗址点位。"
+    />
+    <title>生态地图｜器以载道</title>
+    <link rel="stylesheet" href="ecology.css" />
+  </head>
+  <body class="map-page">
+    <a class="skip-link" href="#content">跳到主要内容</a>
+    <header class="topbar">
+      <a class="brand" href="ecology.html" aria-label="返回器以载道专题">
+        <span class="brand-mark">器</span>
+        <span>
+          <strong>器以载道</strong>
+          <small>盘龙城生态文物专题</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="ecology.html#intro">导语</a>
+        <a href="ecology.html#artifacts">六件文物</a>
+        <a class="is-current" href="map.html">生态地图</a>
+        <a href="ecology.html#quiz">生态足迹</a>
+      </nav>
+    </header>
+
+    <main id="content" class="map-main">
+      <div class="map-title-row">
+        <div>
+          <p class="section-kicker">馆内与遗址联动</p>
+          <h1>盘龙城生态地图</h1>
+          <p>开启生态图层，查找六件文物对应的展柜与遗址线索。</p>
+        </div>
+        <button
+          id="eco-layer-toggle"
+          class="eco-layer-toggle"
+          type="button"
+          aria-pressed="false"
+        >
+          <span class="leaf-icon" aria-hidden="true">叶</span>
+          <span>
+            <strong>生态图层</strong>
+            <small id="layer-state">已关闭</small>
+          </span>
+        </button>
+      </div>
+
+      <div class="eco-map-layout">
+        <section class="eco-map-shell" aria-labelledby="eco-map-title">
+          <h2 id="eco-map-title" class="sr-only">文物展柜与遗址生态点位地图</h2>
+          <svg
+            class="eco-map"
+            viewBox="0 0 1200 680"
+            role="img"
+            aria-labelledby="eco-map-svg-title eco-map-svg-desc"
+          >
+            <title id="eco-map-svg-title">盘龙城博物院与遗址生态点位示意地图</title>
+            <desc id="eco-map-svg-desc">
+              左侧为博物院三个展厅，右侧为遗址区。开启生态图层后显示六处叶片点位。
+            </desc>
+            <defs>
+              <pattern id="map-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+                <path d="M28 0H0V28" fill="none" stroke="#6b765f" stroke-opacity=".1" stroke-width="1"/>
+              </pattern>
+              <filter id="map-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#324235" flood-opacity=".13"/>
+              </filter>
+            </defs>
+            <rect width="1200" height="680" class="map-bg"/>
+            <rect width="1200" height="680" fill="url(#map-grid)"/>
+            <path d="M40 74H1068V616H40Z" class="map-building"/>
+            <path d="M694 74V616" class="map-divider"/>
+            <text x="76" y="125" class="map-zone-title">盘龙城遗址博物院</text>
+            <text x="76" y="153" class="map-zone-subtitle">馆内展厅 · 四件生态线索</text>
+            <text x="742" y="125" class="map-zone-title">盘龙城遗址区</text>
+            <text x="742" y="153" class="map-zone-subtitle">户外点位 · 两件生态线索</text>
+
+            <rect x="76" y="192" width="168" height="354" rx="12" class="museum-room room-a"/>
+            <rect x="270" y="192" width="180" height="354" rx="12" class="museum-room room-b"/>
+            <rect x="476" y="192" width="172" height="354" rx="12" class="museum-room room-c"/>
+            <text x="99" y="233" class="room-number">01</text>
+            <text x="133" y="233" class="room-name">浪淘千古</text>
+            <text x="293" y="233" class="room-number">02</text>
+            <text x="327" y="233" class="room-name">故邑风物</text>
+            <text x="499" y="233" class="room-number">03</text>
+            <text x="533" y="233" class="room-name">角立南土</text>
+            <text x="99" y="260" class="room-subtitle">发现 · 考古 · 城市根脉</text>
+            <text x="293" y="260" class="room-subtitle">生活 · 生产 · 青铜礼器</text>
+            <text x="499" y="260" class="room-subtitle">礼制 · 交流 · 南土中心</text>
+
+            <rect x="742" y="218" width="294" height="194" rx="16" class="site-zone"/>
+            <rect x="776" y="448" width="226" height="135" rx="16" class="site-zone site-zone-soft"/>
+            <text x="880" y="506" class="site-shape-label">宫殿区 · 排水设施</text>
+            <text x="888" y="284" class="site-shape-label">手工作坊 · 资源链</text>
+            <path d="M1020 72C978 152 987 214 1035 274C1070 319 1062 372 1019 430C977 487 989 549 1047 616" class="river"/>
+            <text x="1042" y="174" class="river-label">盘龙湖湿地</text>
+            <path d="M76 602H1038" class="map-route"/>
+            <text x="76" y="635" class="map-entry">入口</text>
+            <text x="1038" y="635" text-anchor="end" class="map-entry">出口</text>
+          </svg>
+
+          <div id="map-points" class="map-points" aria-label="生态点位"></div>
+        </section>
+
+        <aside class="map-detail" aria-live="polite" aria-atomic="true">
+          <div id="map-detail-empty" class="map-detail-empty">
+            <span class="leaf-outline" aria-hidden="true">叶</span>
+            <h2>开启图层，寻找线索</h2>
+            <p>六个叶片点位分别连到文物卡片。点击任意点位查看摘要。</p>
+          </div>
+          <div id="map-detail-card" hidden>
+            <img id="map-detail-image" src="" alt="" />
+            <p id="map-detail-zone" class="section-kicker"></p>
+            <h2 id="map-detail-title"></h2>
+            <p id="map-detail-keyword" class="map-detail-keyword"></p>
+            <p id="map-detail-summary"></p>
+            <div class="map-detail-actions">
+              <a id="map-read" class="button button-primary" href="ecology.html">
+                阅读全文
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>点位为专题导览示意，实际展柜与遗址开放位置以现场标识为准。</p>
+      <p><a href="ecology.html#disclaimer">阅读可靠性说明</a></p>
+    </footer>
+
+    <div class="disclaimer-dock">
+      <span>本图不使用 GPS 定位；点位坐标只服务于本专题导览。</span>
+      <a href="ecology.html#disclaimer">查看完整说明</a>
+    </div>
+
+    <script src="data/artifacts.js"></script>
+    <script src="data/mapPoints.js"></script>
+    <script src="map.js"></script>
+  </body>
+</html>
